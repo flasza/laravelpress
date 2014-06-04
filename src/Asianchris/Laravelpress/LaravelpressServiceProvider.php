@@ -28,12 +28,13 @@ class LaravelpressServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		$this->app->bind('Asianchris\Laravelpress\Wordpress', 'Asianchris\Laravelpress\Post');
+		$this->app->bind('Asianchris\Laravelpress\Post', 'Asianchris\Laravelpress\Page', 'Asianchris\Laravelpress\Media');
 		$this->app->booting(function()
         {
             $loader = \Illuminate\Foundation\AliasLoader::getInstance();
-			$loader->alias('Wordpress', 'Asianchris\Laravelpress\Wordpress');
 			$loader->alias('Post', 'Asianchris\Laravelpress\Post');
+			$loader->alias('Page', 'Asianchris\Laravelpress\Page');
+			$loader->alias('Media', 'Asianchris\Laravelpress\Media');
         });
 	}
 
