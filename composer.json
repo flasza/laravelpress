@@ -13,7 +13,8 @@
     },
     "autoload": {
         "classmap": [
-            "src/migrations"
+            "src/models",
+            "src/builder"
         ],
         "psr-0": {
             "Asianchris\\Laravelpress\\": "src/"
