@@ -19,9 +19,16 @@ class Content extends Eloquent {
         $this->table = Config::get("laravelpress::database.prefix")."posts";
     }
 
+
+    public function newCollection(array $models = array())
+    {
+        return new ContentCollection($models);
+    }
+
+
     public function newQuery($excludeDeleted = true)
     {
-        $builder = new PostBuilder($this->newBaseQueryBuilder());
+        $builder = new ContentBuilder($this->newBaseQueryBuilder());
         $builder->setModel($this)->with($this->with);
         $builder->orderBy('post_date', 'desc');
 

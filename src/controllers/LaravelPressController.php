@@ -6,7 +6,10 @@ class LaravelPressController extends BaseController {
     {
         $post = Content::slug( $slug )->published()->first();
 
-        return json_encode( $post );
+        if( $post != null )
+            return $post->toJson();
+
+        return "NOTHING";
     }
 
 }

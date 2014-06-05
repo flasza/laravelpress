@@ -7,9 +7,9 @@
 
 namespace Asianchris\Laravelpress;
 
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Builder as Builder;
 
-class PostBuilder extends Builder
+class ContentBuilder extends Builder
 {
 
     public function status($postStatus)
