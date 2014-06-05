@@ -15,6 +15,8 @@ class Content extends Eloquent {
 
     protected $primaryKey = 'ID';
 
+    protected $hidden = array('ping_status','post_password','comment_count');
+
     public function __construct( array $attributes = array() ) {
         $this->table = Config::get("laravelpress::database.prefix")."posts";
     }
