@@ -8,7 +8,7 @@
 namespace Asianchris\Laravelpress;
 
 
-class Page extends Post {
+class Page extends Content {
 
     protected $postType = 'page';
 

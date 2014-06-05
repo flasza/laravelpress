@@ -8,7 +8,7 @@
 namespace Asianchris\Laravelpress;
 
 
-class Media extends Post {
+class Media extends Content {
 
     protected $postType = 'attachment';
 
