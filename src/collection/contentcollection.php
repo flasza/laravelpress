@@ -32,15 +32,12 @@ class ContentCollection extends Collection {
 
     protected function getPost($item) {
 
-        $rel = Config::get("laravelpress::database.prefix")."term_relationships";
-        $tax = Config::get("laravelpress::database.prefix").'term_taxonomy';
-        $term = Config::get("laravelpress::database.prefix").'terms';
-        $data = DB::table( $rel )
-            ->join( $tax , $rel.".term_taxonomy_id", "=", $tax.".term_taxonomy_id" )
-            ->join( $term , $tax.".term_id", "=", $term.".term_id")
-            ->where( $rel.'.object_id', $item->ID )
+        $data = DB::table( 'term_relationships' )
+            ->join( 'term_taxonomy' , "term_relationships.term_taxonomy_id", "=", "term_taxonomy.term_taxonomy_id" )
+            ->join( 'terms' , "term_taxonomy.term_id", "=", "terms.term_id")
+            ->where( 'term_relationships.object_id', $item->ID )
         //    ->where( $tax.'.taxonomy', 'post_tag' )
-            ->select( $term.'.term_id as ID', $term.'.name', $term.'.slug', $tax.'.taxonomy')
+            ->select( 'terms.term_id as ID', 'terms.name', 'terms.slug', 'term_taxonomy.taxonomy')
             ->get();
 
         $tags = array();

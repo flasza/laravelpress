@@ -11,12 +11,12 @@ use Illuminate\Support\Facades\Config as Config;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class Option extends Eloquent {
-    protected $table;
+    protected $table = "options";
 
     protected $primaryKey = 'option_id';
 
     public function __construct( array $attributes = array() ) {
-        $this->table = Config::get("laravelpress::database.prefix")."options";
+        $this->connection = Config::get("laravelpress::settings.database_connection");
     }
 
 

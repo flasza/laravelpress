@@ -11,14 +11,15 @@ use Illuminate\Support\Facades\Config as Config;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class Content extends Eloquent {
-    protected $table;
+    protected $table = "posts";
 
     protected $primaryKey = 'ID';
 
     protected $hidden = array('ping_status','post_password','comment_count', 'post_mime_type', 'post_content_filtered', 'pinged', 'to_ping');
 
     public function __construct( array $attributes = array() ) {
-        $this->table = Config::get("laravelpress::database.prefix")."posts";
+        $this->connection = Config::get("laravelpress::settings.database_connection");
+        //$this->table = Config::get("laravelpress::database.prefix")."posts";
     }
 
 

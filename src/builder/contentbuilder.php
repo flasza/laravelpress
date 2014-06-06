@@ -45,19 +45,14 @@ class ContentBuilder extends Builder
     }
 
     private function getTaxonomy($slug, $taxonomy) {
-        $rel = Config::get("laravelpress::database.prefix")."term_relationships";
-        $tax = Config::get("laravelpress::database.prefix").'term_taxonomy';
-        $term = Config::get("laravelpress::database.prefix").'terms';
-        $post = Config::get("laravelpress::database.prefix").'posts';
-
-        return $this->whereExists(function($query) use ($rel, $tax, $term, $post, $slug, $taxonomy){
+        return $this->whereExists(function($query) use ($slug, $taxonomy){
             $query->select(DB::raw(1))
-                ->from( $term )
-                ->join( $tax , $term.'.term_id', '=', $tax.'.term_id' )
-                ->join( $rel , $rel.'.term_taxonomy_id', '=', $tax.'.term_taxonomy_id' )
-                ->where( $tax.'.taxonomy', '=', $taxonomy )
-                ->where( $term.'.slug', '=', $slug )
-                ->whereRaw( $post.'.ID = '.$rel.'.object_id' );
+                ->from( 'terms' )
+                ->join( 'term_taxonomy' , 'terms.term_id', '=', 'term_taxonomy.term_id' )
+                ->join( 'term_relationships' , 'term_relationships.term_taxonomy_id', '=', 'term_taxonomy.term_taxonomy_id' )
+                ->where( 'term_taxonomy.taxonomy', '=', $taxonomy )
+                ->where( 'terms.slug', '=', $slug )
+                ->wherePivot( 'posts.ID','term_relationships.object_id' );
         });
     }
 }

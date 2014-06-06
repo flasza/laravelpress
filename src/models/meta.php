@@ -11,12 +11,12 @@ use Illuminate\Support\Facades\Config as Config;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class Meta extends Eloquent {
-    protected $table;
+    protected $table = 'postmeta';
 
     protected $primaryKey = 'ID';
 
     public function __construct( array $attributes = array() ) {
-        $this->table = Config::get("laravelpress::database.prefix")."postmeta";
+        $this->connection = Config::get("laravelpress::settings.database_connection");
     }
 
 }
