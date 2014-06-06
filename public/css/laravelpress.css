@@ -1,5 +1,5 @@
 .lp-tags { }
-.lp-tag { display:inline-block; margin: 10px; padding: 10px; background: #ACACAC; border-radius:3px; }
+.lp-tag { display:inline-block; margin: 10px; padding: 5px 10px; background: #ACACAC; border-radius:3px; font-size: 0.8em; }
 
 .lp-gallery{ }
 .lp-gallery .lp-gallery-item { display:inline-block; margin:10px; }
