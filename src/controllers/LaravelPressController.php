@@ -1,8 +1,13 @@
 <?php
 
 class LaravelPressController extends BaseController {
+    public function Home() {
+        $posts = Post::published()->paginate();
 
-    public function Home($slug = null)
+        return View::make('laravelpress::feed.home', array('posts'=>$posts));
+    }
+
+    public function Content($slug = null)
     {
         $post = Content::slug( $slug )->published()->first();
 
@@ -17,6 +22,14 @@ class LaravelPressController extends BaseController {
         }
 
         return "NOTHING";
+    }
+    public function Category($slug) {
+        $posts = Post::categorySlug($slug)->published()->paginate();
+        return View::make('laravelpress::feed.home', array('posts'=>$posts));
+    }
+    public function Tag($slug) {
+        $posts = Post::tagSlug($slug)->published()->paginate();
+        return View::make('laravelpress::feed.home', array('posts'=>$posts));
     }
 
     private function setGallery($content) {

@@ -29,7 +29,15 @@ class LaravelpressServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		$this->app->bind('Asianchris\Laravelpress\Option','Asianchris\Laravelpress\Content', 'Asianchris\Laravelpress\Post', 'Asianchris\Laravelpress\Page', 'Asianchris\Laravelpress\Media');
+		$this->app->bind(
+			'Asianchris\Laravelpress\Option',
+			'Asianchris\Laravelpress\Content',
+			'Asianchris\Laravelpress\Post',
+			'Asianchris\Laravelpress\Page',
+			'Asianchris\Laravelpress\Media',
+			'Asianchris\Laravelpress\Meta',
+			'Asianchris\Laravelpress\User'
+		);
 		$this->app->booting(function()
         {
             $loader = \Illuminate\Foundation\AliasLoader::getInstance();
@@ -38,6 +46,8 @@ class LaravelpressServiceProvider extends ServiceProvider {
 			$loader->alias('Post', 'Asianchris\Laravelpress\Post');
 			$loader->alias('Page', 'Asianchris\Laravelpress\Page');
 			$loader->alias('Media', 'Asianchris\Laravelpress\Media');
+			$loader->alias('Meta', 'Asianchris\Laravelpress\Meta');
+			$loader->alias('User', 'Asianchris\Laravelpress\User');
         });
 	}
 

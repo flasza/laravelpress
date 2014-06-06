@@ -26,7 +26,7 @@ class ContentCollection extends Collection {
 	}
     protected function getAttachment($item) {
         $alt = Meta::where('post_id', $item->ID)->where('meta_key','_wp_attachment_image_alt')->first();
-        if($alt != null) { $item->post_image_alt = $alt->meta_value; } 
+        if($alt != null) { $item->post_image_alt = $alt->meta_value; }
         return $item;
     }
 
@@ -58,7 +58,8 @@ class ContentCollection extends Collection {
         $item->post_tags = $tags;
         $item->post_categories = $cats;
 
-
+        $thumb = Meta::where('post_id', $item->ID)->where('meta_key','_thumbnail_id')->first();
+        if($thumb != null ) { $t = Media::find($thumb->meta_value); $item->post_thumbnail = $t->guid; }
 
         return $item;
     }

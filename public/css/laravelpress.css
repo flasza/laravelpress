@@ -1,3 +1,8 @@
+.lp-feed-post { vertical-align: top; margin: 15px auto; }
+.lp-feed-post img { max-width: 250px; }
+.lp-feed-post-image { display: inline-block;  vertical-align: top; margin-right:10px; overflow: hidden; height: 170px; width: 250px; }
+.lp-feed-post-info { display: inline-block;  vertical-align: top; }
+.lp-feed-post-excerpt { font-size: 0.8em; color: #ACACAC; margin: 15px auto;}
 .lp-tags { }
 .lp-tag { display:inline-block; margin: 10px; padding: 5px 10px; background: #ACACAC; border-radius:3px; font-size: 0.8em; }
 
