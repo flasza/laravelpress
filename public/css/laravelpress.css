@@ -1,0 +1,6 @@
+.lp-tags { }
+.lp-tag { display:inline-block; margin: 10px; padding: 10px; background: #ACACAC; border-radius:3px; }
+
+.lp-gallery{ }
+.lp-gallery .lp-gallery-item { display:inline-block; margin:10px; }
+.lp-gallery .lp-gallery-item img { max-width: 150px; }
