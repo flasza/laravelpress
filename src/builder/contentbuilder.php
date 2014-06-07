@@ -52,7 +52,7 @@ class ContentBuilder extends Builder
                 ->join( 'term_relationships' , 'term_relationships.term_taxonomy_id', '=', 'term_taxonomy.term_taxonomy_id' )
                 ->where( 'term_taxonomy.taxonomy', '=', $taxonomy )
                 ->where( 'terms.slug', '=', $slug )
-                ->wherePivot( 'posts.ID','term_relationships.object_id' );
+                ->whereRaw( DB::getTablePrefix().'posts.ID = '.DB::getTablePrefix().'term_relationships.object_id' );
         });
     }
 }

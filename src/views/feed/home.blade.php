@@ -1,4 +1,4 @@
-@extends( Config::get("laravelpress::view.layout") )
+@extends( Config::get("laravelpress::settings.layout") )
 
 @section('meta')
     <title>{{ Option::getOption('blogname') }}</title>

@@ -8,7 +8,7 @@
 |
 */
 
-Route::group(array( 'prefix'=> Config::get("laravelpress::routes.baseURL") ), function() {
+Route::group(array( 'prefix'=> Config::get("laravelpress::settings.baseURL") ), function() {
 
     Route::get('/', 'LaravelPressController@Home');
 
