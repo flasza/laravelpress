@@ -3,6 +3,8 @@
 
 Laravel package that works with Wordpress CMS Backend. This package is meant for people who want to create a custom front end for Wordpress
 
+This package talks directly to the database. It does not rely on Wordpress directly. Wordpress is only used to manage the content.
+
 This is based on the work of Junior Grossi. More info [here](http://grossi.io/2014/working-with-laravel-4-and-wordpress-together/)
 
 ## Installation
@@ -75,13 +77,21 @@ yield('content')
 ### Routes
 Other than the baseURL in the configuration settings, you can change the routes by adding it into your routes.php. The routes here will take precedence over the package routes when they overlap.
 
+### Wordpress
+To "disable" the front end portion of Wordpress, you can add the following lines to automatically redirect to the Admin section
+```php
+header("Location: ./wp-admin");
+exit();
+```
+
 ## Models
-To understand the models, you need to have some knowledge of the Wordpress database.
+To understand the models, you should have some knowledge of the Wordpress database.
+
+The Models extend Eloquent, so you have all the best parts of Eloquent, with some extended functionality
 
 ### Content
-This is the main model that looks at the posts table. Model follows standard Eloquent functions
+This is the main model that looks at the posts table. Most of the models extend this.
 
-Additional Functions
 ```php
 //Published Content
 $content = Content::published()->get();
