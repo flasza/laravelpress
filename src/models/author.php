@@ -10,7 +10,7 @@ namespace Asianchris\Laravelpress;
 use Illuminate\Support\Facades\Config as Config;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class User extends Eloquent {
+class Author extends Eloquent {
     protected $table = 'users';
 
     protected $primaryKey = 'ID';

@@ -36,7 +36,7 @@ class LaravelpressServiceProvider extends ServiceProvider {
 			'Asianchris\Laravelpress\Page',
 			'Asianchris\Laravelpress\Media',
 			'Asianchris\Laravelpress\Meta',
-			'Asianchris\Laravelpress\User'
+			'Asianchris\Laravelpress\Author'
 		);
 		$this->app->booting(function()
         {
@@ -47,7 +47,7 @@ class LaravelpressServiceProvider extends ServiceProvider {
 			$loader->alias('Page', 'Asianchris\Laravelpress\Page');
 			$loader->alias('Media', 'Asianchris\Laravelpress\Media');
 			$loader->alias('Meta', 'Asianchris\Laravelpress\Meta');
-			$loader->alias('User', 'Asianchris\Laravelpress\User');
+			$loader->alias('Author', 'Asianchris\Laravelpress\Author');
         });
 	}
 

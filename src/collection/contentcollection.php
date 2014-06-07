@@ -20,7 +20,7 @@ class ContentCollection extends Collection {
             } elseif( $items[$i]->post_type == "attachment" ) {
                 $items[$i] = $this->getAttachment($items[$i]);
             }
-            $items[$i]->post_author = User::find( $items[$i]->post_author );
+            $items[$i]->post_author = Author::find( $items[$i]->post_author );
         }
 		$this->items = $items;
 	}
